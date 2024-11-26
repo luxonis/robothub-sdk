@@ -67,5 +67,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install regctl
+        run: |
+          wget https://github.com/regclient/regclient/releases/latest/download/regctl-linux-amd64 -O /usr/local/bin/regctl
+          chmod 755 /usr/local/bin/regctl
       - name: Make multi-arch manifests
         run: ./scripts/make-manifests.sh

@@ -59,7 +59,7 @@ for elem in "${elems[@]}"; do
         --label "org.opencontainers.image.vendor=Luxonis" \
         --label "org.opencontainers.image.ref.name=${IMAGE_REF_NAME}" \
         --label "org.opencontainers.image.title=RobotHub App base image" \
-        --label "org.opencontainers.image.description=DepthAI version: ${DEPTHAI_VERSION}" \
+        --label "org.opencontainers.image.description=DepthAI version: ${DEPTHAI_VERSION}, DepthAI SDK version: ${DEPTHAI_SDK_VERSION}, Robothub version: ${ROBOTHUB_VERSION}" \
         --label "com.luxonis.rh.depthai.version=${DEPTHAI_VERSION}" \
         --label "com.luxonis.rh.depthai-sdk.version=${DEPTHAI_SDK_VERSION}" \
         --label "com.luxonis.rh.robothub.version=${ROBOTHUB_VERSION}" \

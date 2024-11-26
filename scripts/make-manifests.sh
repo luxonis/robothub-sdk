@@ -23,8 +23,11 @@ declare -a suffixes=(
 
 # Make manifests
 for suffix in "${suffixes[@]}"; do
+    TAG="${BASE_TAG}-${suffix}"
     docker buildx imagetools create \
-        --tag "${BASE_TAG}-${suffix}" \
+        --tag "${TAG}" \
         "${BASE_AMD64_TAG}-${suffix}" \
         "${BASE_ARM64_TAG}-${suffix}"
+    DESCRIPTION=$(docker buildx imagetools inspect ${BASE_AMD64_TAG}-${suffix} --format '{{ index .Image.Config.Labels "org.opencontainers.image.description"}}')
+    regctl image mod ${TAG} --create ${TAG} --annotation "org.opencontainers.image.description=$DESCRIPTION"
 done
